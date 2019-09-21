@@ -1,0 +1,268 @@
+/* ****************************
+           Main CSS 
+**************************** */
+
+body {
+    font-family: "Montserrat";
+    font-weight: 400;
+}
+
+a i {
+    color: #ECDDD9;
+    font-size: 18px !important;
+
+}
+
+h1, h2, h3 {
+    font-weight: 900;
+}
+
+h4, h5, h6 {
+    font-weight: 700;
+}
+
+.btn {
+    border-radius: 0% !important;
+    box-shadow: none !important;
+}
+
+/* ****************************
+        Buttons CSS 
+**************************** */
+
+.btn-primary{
+    background-color: #020100 !important;
+    border-color: #020100 !important;
+}
+
+.btn-primary:hover {
+    background-color: transparent !important;
+    color: #020100 !important;
+}
+
+.btn-outline-secondary {
+    color: #FEFFFE !important;
+    border-color: #FEFFFE !important;
+}
+
+.btn-outline-secondary:hover{
+    background-color: #FEFFFE !important;
+    color:  #020100 !important;
+}
+
+/* ****************************
+        Headings CSS 
+**************************** */
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-heading::first-letter{
+    color: #ECDDD9;
+}
+
+/* ****************************
+        NavBar CSS 
+**************************** */
+
+.navbar {
+    opacity: 1;
+}
+
+.navbar-brand {
+    font-size: 2rem;
+    color: #020100 !important;
+
+}
+
+.nav-link{
+    color: #020100 !important;
+}
+
+.nav-link:hover{
+    color: #777 !important;
+}
+
+.navbar .btn-primary {
+    color:#FEFFFE !important;
+}
+
+.navbar .btn-primary:hover {
+    color:#020100 !important;
+    background-color: transparent !important;
+}
+
+.valign {
+    vertical-align: super !important;
+    color: slategray;
+}
+
+/* ****************************
+        HOME CSS 
+**************************** */
+
+.home {
+    min-height: 660px;
+    overflow: hidden;
+    background-image: url(../img/main-5.jpg);
+    background-position: bottom;
+    background-size: cover;
+}
+
+.card {
+    margin: 5rem 0;
+    transition-duration: 3s;
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.rowclass{
+    margin-top: 55px;
+
+}
+
+.card:hover {
+    transform: scale(1.55);
+}
+
+.card-img-top{
+    height: 300px;
+    object-fit: cover;
+}
+
+/* ****************************
+       Call To Action CSS 
+**************************** */
+
+.call-to-action{
+    background-color: #020100;
+    color: #FEFFFE;
+}
+
+/* ****************************
+        Gallery CSS 
+**************************** */
+
+.price-tag {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #020100;
+    padding: 20px;
+    color: #ECDDD9;
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.dollar {
+    font-size: 1.35rem;
+
+}
+
+.gallery{
+    column-count: 3;
+    column-width: 33%;
+    margin-top: 3rem;
+}
+
+.gallery .pics {
+    position: relative;
+    overflow: hidden !important;
+}
+
+.gallery .pics img:hover{
+    transform: scale(1.3);
+    transition-duration: 1s;
+}
+
+/* ****************************
+        Testimonials CSS 
+**************************** */
+
+.testimonial-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    padding-top: 10px;
+}
+
+.testimonials{
+    background-color: #020100;
+    color: #FEFFFE;
+}
+
+
+/* ****************************
+    Contact Form&Other CSS 
+**************************** */
+
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+textarea,
+select {
+    border-radius: 0 !important;
+    padding: 20px 10px !important;
+    border: none;
+    border-bottom: 1px solid #020100 !important;
+    color: #020100 !important;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+textarea:focus,
+uneditable-input:focus,
+select:focus{
+    border-color: #020100 !important;
+    box-shadow: 0 1px 1px rgba(2, 1, 0, 0.075) inset, 0 0 4px #020100 !important;
+    outline: 0 none !important;
+}
+
+/* ****************************
+        Footer CSS 
+**************************** */
+
+.footer {
+    background-color: #020100;
+    color: #FEFFFE !important;
+}
+
+.footer a{
+    color: #FEFFFE !important;
+}
+
+.footer .navbar-brand {
+    color:  #FEFFFE !important;
+}
+
+.footer h4 {
+    margin-top: 10px;
+}

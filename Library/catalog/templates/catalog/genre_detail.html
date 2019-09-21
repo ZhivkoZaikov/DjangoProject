@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} Genres {% endblock %}
+
+{% block sidebar %}
+    <h3>All books from the "{{genre.name}}" genre:</h3>
+
+    {% for book in genre.book_set.all %}
+        <p>{{forloop.counter}}. <a href="{{book.get_absolute_url}}">{{book}}</a></p>
+    {% endfor %}
+{% endblock %}
+
+
+
+{% block content %}
+<img src="{{genre.image.url}}" alt="Image">
+{% endblock %}

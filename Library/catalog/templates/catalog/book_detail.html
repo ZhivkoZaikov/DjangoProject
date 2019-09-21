@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %} Details {% endblock %}
+
+{% block sidebar %}
+
+    <h3>Book details:</h3>
+    <p>Total copies: {{ number_of_instances }}</p>
+    <p>Available copies: {{ available_books }}</p>
+
+    {% for book_instance in instances %}
+        <hr class="my-4">
+        <p><strong>Book number {{forloop.counter}}: </strong></p>
+        <p>ID: {{book_instance.id}} </p>
+        <p>Imprint: {{book_instance.imprint}} </p>
+        <p>Availability: {{ book_instance.get_status_display }} </p>
+
+        {% if book_instance.status == 'o' %}
+            <p><strong>Due to be returned: {{book_instance.due_back}} </strong></p>
+            {% if user.is_authenticated %}
+                <p>Borrowed by: {{book_instance.borrower}}</p>
+            {% else %}
+                <p>You have to login for additional information!</p>
+            {% endif %}
+        {% endif %}
+
+        <!-- {% if perms.catalog.can_mark_returned %}
+            <a href="{% url 'renew-book-librarian' book_instance.id %}">Renew</a>
+        {% endif %} -->
+        {% if perms.catalog.can_mark_returned %}
+        <button class="btn btn-dark" ><a href="{% url 'full-renew-book-librarian' book_instance.id %}">Edit Renewal Info</a></button>
+        <br>
+        {% endif %}
+    {% endfor %}
+
+    <hr class="my-4">
+
+{% endblock %}
+
+{% block content %}
+
+<section class="container-fluid">
+    <div class="row align-items-center">
+        <div class="col-md-6 mt-5 ">
+            <h2>{{ book.title }}  </h2>
+            <br>
+            {{ book.summary|linebreaks }}
+
+            <h5>Author: {{book.author.get_name }} </h5>
+            <p>Published: {{ book.published }} </p>
+            <p>Genre: {{book.display_genre}} </p>
+            <!-- <p>Genre direct: {{book.genre.all}} </p>
+            <p>Genre again: {% for genres in book.genre.all %} 
+                <p>{{genres}}</p>
+                {% endfor %}
+            </p> -->
+            <button class="btn btn-success"><a href="{% url 'book_update_custom' book.id %}">Edit</a></button>
+            <button class="btn btn-danger">Delete</button>
+        </div>
+        <div class="col-md-6">
+            <img class="img-fluid" src="{{book.image.url}}" alt="Image">
+        </div>
+    </div>
+</section>
+<section class="container-fluid">
+    <div class="row py-5" class="align-items-center">
+        <div class="col-md-6 ">
+            <img class="img-fluid" src="{{book.author.image.url}}" alt="Image">
+        </div>
+        <div class="col-md-6  ">
+            {{ book.author.about_the_author }}
+            <br>
+            <a href="{{ book.author.get_absolute_url }}">About the author</a>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %} Authors Details {% endblock %}
+
+{% block sidebar %}
+{% if author_books %}
+
+<h3>Books from this author:</h3>
+<ol>
+{% for book in author_books %}
+    <li><a href="{{book.get_absolute_url}}">{{book}}</a></li>
+{% endfor %}
+</ol>
+
+{% else %}
+    <h3>No books for this author yet.</h3>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<section class="container-fluid">
+    <div class="row align-items-center">
+        <div class="col-md-6 mt-5 ">
+            <h2>{{ author.get_name }}  </h2>
+            <br>
+            {{ author.about_the_author|linebreaks }}
+
+            <p>Born: {{ author.date_of_birth }} </p>
+        </div>
+        <div class="col-md-6">
+            <img class="img-fluid" src="{{author.image.url}}" alt="Image">
+        </div>
+    </div>
+</section>
+
+<div>
+    <button class="btn btn-success btn-lg"><a href="{% url 'author_update' pk=author.pk %}">Update</a></button>
+    <button class="btn btn-warning btn-lg"><a href="{% url 'author_delete' pk=author.pk %}">Remove</a></button>
+
+</div>
+
+{% endblock %}

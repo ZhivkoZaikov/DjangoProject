@@ -1,0 +1,75 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href=" {% url 'index' %} ">Library</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'books' %}">Books <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'authors' %}">Authors</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'genres' %}">Genres</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {% if user.is_authenticated %} {{user.username|title}} {% else %} Menu {% endif %}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{% url 'my-borrowed'%}">My loaned books</a>
+            <a class="dropdown-item" href="{% url 'all-borrowed'%}">All loaned books</a>
+
+            <a class="dropdown-item" href="{% url 'expired-books' %}">All Overdue Books</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+
+        {% if request.user.is_staff %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Create New</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{% url 'book_create' %}">Create New Book</a>
+            <a class="dropdown-item" href="{% url 'author_create'%}">Create New Author</a>
+
+            <a class="dropdown-item" href="{% url 'genres-create' %}">Add Genre</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Add Language</a>
+          </div>
+        </li>
+        {% endif %}
+
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+      <ul class="navbar-nav mr-auto">
+      {% if user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}?next={{request.path}}">Logout</a>
+        </li>
+
+      {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}?next={{request.path}}">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'register' %}?next={{request.path}}">Register</a>
+        </li>
+      {% endif %}
+      <!-- the code - ?next={{request.path}} - after the URL code would redirect the visitor to
+      the same URL where login/logout is clicked once he is successfully logged in (or logged out) -->
+      <li class="nav-item">
+          <a class="nav-link" href="">Statistics?</a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+</div>

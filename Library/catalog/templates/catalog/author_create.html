@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<form enctype="multipart/form-data" action="" method="POST">
+    {% csrf_token %}
+
+<!-- <div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6">
+            {{ form.first_name|as_crispy_field }}
+        </div>
+        <div class="col-sm-6">
+                {{ form.last_name|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            {{ form.date_of_birth|as_crispy_field }}
+        </div>
+        <div class="col-sm-6">
+                {{ form.date_of_death|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            {{ form.image|as_crispy_field }}
+        </div>
+        <div class="col-sm-6">
+                {{ form.about_the_author|as_crispy_field }}
+        </div>
+    </div>
+</div> -->
+{{ form }}
+<input type="submit" value="Submit">
+</form>
+
+{% endblock %}
+

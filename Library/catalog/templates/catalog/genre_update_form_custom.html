@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Update Genre {% endblock %}
+
+{% block content %}
+
+<h1>Update Genre: {{genre.name}}  </h1>
+<h3>Add the appropriate name and image</h3>
+<br>
+<p>Proceed with caution!</p>
+<br>
+
+<form enctype="multipart/form-data" action="" method="POST">
+    {% csrf_token %}
+
+    {{ form|crispy }}
+            <input type="submit" value="Submit">
+    </form>
+
+{% endblock %}

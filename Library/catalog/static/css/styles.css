@@ -1,0 +1,13 @@
+.sidebar-nav {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+}
+
+button a {
+    color: grey;
+}
+
+li a, p a {
+    color: grey;
+}

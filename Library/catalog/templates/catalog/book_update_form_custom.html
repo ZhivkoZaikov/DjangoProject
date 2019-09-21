@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+
+
+{% block content %}
+
+
+<div class="jumbotron jumbotron-fluid text-center">
+  <div class="container-fluid">
+    <h1 class="display-4">You are now at the Book Edit section!</h1>
+    <h1>You are about to Edit Book: {{book.title}} </h1>
+    <hr class="my-4">
+    <p>A time spent on a book is a time well spent!</p>
+  </div>
+</div>
+
+    <form enctype="multipart/form-data" action="" method="POST">
+        {% csrf_token %}
+
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-sm-6">
+                    {{ form.title|as_crispy_field }}
+                </div>
+                <div class="col-sm-6">
+                        {{ form.author|as_crispy_field }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    {{ form.date_added|as_crispy_field }}
+                </div>
+                <div class="col-sm-6">
+                        {{ form.published|as_crispy_field }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    {{ form.language|as_crispy_field }}
+                </div>
+                <div class="col-sm-6">
+                        {{ form.isbn|as_crispy_field }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    {{ form.copies|as_crispy_field }}
+                </div>
+                <div class="col-sm-6">
+                        {{ form.image|as_crispy_field }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    {{ form.summary|as_crispy_field }}
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-2 d-flex justify-content-end">
+                {{ form.genre|as_crispy_field }}
+        </div>
+        <div class="row">
+    </div>
+
+            <!-- <div class="row">
+                    <div class="col-sm-6">
+                        {{ form.date_added|as_crispy_field }}
+                    </div>
+                    <div class="col-sm-6">
+                            {{ form.published|as_crispy_field }}
+                    </div>
+                </div> -->
+
+        <!-- {{ form|crispy }} -->
+
+        <input type="submit" value="Submit">
+    </form>
+
+{% endblock %}

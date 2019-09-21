@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Borrowed Books {% endblock %}
+
+{% block sidebar %}
+
+{% endblock %}
+
+
+{% block content %}
+    <!-- {% for book in loaned_books %}
+        <p>{{book.book.title}}</p>
+    {% endfor %} -->
+<!-- 
+    <div class="jumbotron jumbotron-fluid text-center">
+        <div class="container">
+          <h1 class="display-4">You are now at the Book section!</h1>
+          <p class="lead">Have fun exploring the world of books!</p>
+          <hr class="my-4">
+          <p>A time spent on a book is a time well spent!</p>
+        </div>
+      </div>
+
+      
+-->
+
+<div class="jumbotron jumbotron-fluid text-center">
+  <div class="container">
+    <h1 class="display-4">All books borrowed by users</h1>
+    <p class="lead">Overdue books first</p>
+    <hr class="my-4">
+    <p>Call the customers with overdue books first!</p>
+  </div>
+</div>
+
+<div class="container-fluid"> 
+     
+    <!-- <div class="album py-5 bg-light">
+        <div class="row"> -->
+                <div class="row">
+
+            {% for book in my_book_list %}
+            <!-- <div class="col-md-4 d-flex flex-fill">
+                <div class="card mb-4 shadow-sm">
+                  <img width="100%" height="225" class="card-img-top" src="{{book.book.image.url}}" alt="Image">
+                   
+                  <div class="card-body d-flex flex-column">
+                    <p class="card-text">{{ book.book.title }}</p>
+                    <div class="d-flex justify-content-between align-items-center mt-auto">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary "><a href="{{ book.book.get_absolute_url }}">View</a></button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary ">Edit</button>
+                      </div>
+                      <small class="text-muted">9 mins</small>
+                    </div>
+                  </div>
+                </div>
+            </div> -->
+            <div class="card mb-3 col-md-6 ">
+                    <div class="row no-gutters">
+
+                      <div class="col-md-4 d-flex flex-fill ">
+                        <img src="{{book.book.image.url}}" class="card-img" alt="Image">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title"><a href="{{ book.book.get_absolute_url }}">{{ book.book.title }}</a></h5>
+                          <p class="card-text">Borrowed by: {{ book.borrower }} </p>
+                          <p class="card-text">{% if book.is_overdue %}
+                                <p class="text-center text-danger">Overdue!!! Due date: {{ book.due_back }} </p>
+                            {% else %}
+                                <p class="text-center">Due date: {{ book.due_back }}</p>
+                              {% endif %} </p>
+
+                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                      </div>
+                    <!-- </div>-->
+                  </div> 
+                </div>
+            {% endfor %}
+ 
+        </div>
+
+        {% if my_book_list.has_other_pages %}
+        
+        <ul class="pagination">
+
+          {% if my_book_list.has_previous %}
+            <li><a href="?page={{ my_book_list.previous_page_number }}">&laquo; Previous</a></li>
+            
+          {% else %}
+
+            <li class="disabled"><span>&laquo;</span></li>
+          {% endif %}
+
+          {% for i in my_book_list.paginator.page_range %}
+            {% if my_book_list.number == i %}
+              <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+            {% else %}
+              <li><a href="?page={{ i }}">{{ i }}</a></li>
+            {% endif %}
+          {% endfor %}
+          
+          {% if my_book_list.has_next %}
+            <li><a href="?page={{ my_book_list.next_page_number }}">&raquo; Next</a></li>
+          {% else %}
+            <li class="disabled"><span>&raquo;</span></li>
+          {% endif %}
+        </ul>
+      {% endif %}
+    </div>
+{% endblock %}

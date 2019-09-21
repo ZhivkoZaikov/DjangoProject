@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} Edit Book Info {% endblock %}
+
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            <h3>Book Information:</h3>
+            <p>Book name: {{book_instance.book.title}}</p>
+            <p>Current borrower: {{book_instance.borrower}} </p>
+            <p>Due date: {{book_instance.due_back}}</p>
+            <p>Book Status: {{book_instance.get_status_display}} </p>
+        </div>
+        <div class="col-md-4">
+            <img width="100%" height="450" class="card-img-top" src="{{book_instance.book.image.url}}" alt="">
+        </div>
+    </div>
+</div>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <input type="Submit" value="Submit">
+</form>
+
+{% endblock %}

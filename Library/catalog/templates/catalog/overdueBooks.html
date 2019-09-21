@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %} Books {% endblock %}
+
+{% block sidebar %}
+  <h3>Users with expired books:</h3>
+  <ol>
+  {% for book in expired %}
+    <p>*********</p>
+    <p>Book Name: {{book.book.title}} </p>
+    <p>Borrowed by: {{book.borrower}}</p>
+
+  {% endfor %}
+  <p>*********</p>
+
+</ol>
+
+{% endblock %}
+
+{% block content %} 
+
+<div class="jumbotron jumbotron-fluid text-center">
+  <div class="container">
+    <h1 class="display-4">Expired Books!</h1>
+    <hr class="my-4">
+    <p>A time spent on a book is a time well spent!</p>
+  </div>
+</div>
+
+<div class="album py-5 bg-light">
+    <div class="row">
+
+        {% for book in expired %}
+        <div class="col-md-3 d-flex flex-fill">
+            <div class="card mb-4 shadow-sm">
+              <img width="100%" height="225" class="card-img-top" src="{{book.book.image.url}}" alt="Image">
+               
+              <div class="card-body d-flex flex-column">
+                <p class="card-text">{{ book.book.summary|truncatechars:250 }}</p>
+                <div class="d-flex justify-content-between align-items-center mt-auto">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary "><a href="{{ book.book.get_absolute_url }}">View</a></button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary "><a href="{% url 'book_update_custom' book.book.id %}">Edit</a> </button>
+                  </div>
+                  <small class="text-muted">9 mins</small>
+                </div>
+              </div>
+              {% if book.is_overdue %}
+                <p class="text-center text-danger">Overdue!!! {{book.due_back}} </p>
+            {% else %}
+                <p class="text-center">Due date: {{book.due_back}}</p>
+              {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+      </div>
+        <br>
+        <!-- {% if expired.has_other_pages %}
+          <ul class="pagination">
+            {% if expired.has_previous %}
+              <li><a href="?page={{ expired.previous_page_number }}">&laquo; Previous</a></li>
+            {% else %}
+              <li class="disabled"><span>&laquo;</span></li>
+            {% endif %}
+
+            {% for i in expired.paginator.page_range %}
+              {% if expired.number == i %}
+                <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+              {% else %}
+                <li><a href="?page={{ i }}">{{ i }}</a></li>
+              {% endif %}
+            {% endfor %}
+            
+            {% if expired.has_next %}
+              <li><a href="?page={{ expired.next_page_number }}">&raquo; Next</a></li>
+            {% else %}
+              <li class="disabled"><span>&raquo;</span></li>
+            {% endif %}
+          </ul>
+        {% endif %} -->
+
+
+
+    
+</div>
+
+{% endblock %}
+
+

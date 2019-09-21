@@ -1,0 +1,20 @@
+1. mybooks view 
+  -- display old borrowed books(which are already returned)
+  -- display total borrowed books (current)
+  -- display total borrowed books over time (without current)
+  -- average time a book is borowwed(display as average read time?)
+
+2. Create statistics view
+  -- total books borrowed
+  -- average books borrowed per customer(over time)
+  -- average current borrowed books
+  -- display all overdue books (maybe in new view)
+  -- average overdue of a book
+  -- create user reputation depending on the book overdue
+  -- total books borrowed each month(display in a schema?)
+  -- the above statistics for genre, author
+
+3. User 
+
+  -- Create custom user configuration in admin
+  -- Create user view with information about the user (staff member only)
