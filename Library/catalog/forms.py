@@ -109,6 +109,10 @@ class authorCreateForm(forms.Form):
         cleaned_data=super(authorCreateForm, self).clean()
         first_name_form = cleaned_data.get('first_name')
         last_name_form = cleaned_data.get('last_name')
+        about_the_author = cleaned_data.get('about_the_author')
+
+        if about_the_author.length() > 1000:
+            raise forms.ValidationError(f'Text should be less than 1000 characters. (currently about_the_author.length() chars. )')
         # for author_name in Author.objects.all():
         #     for author_last_name in Author.objects.all():
         #         if first_name_form == author_name.first_name and last_name_form == author_last_name.last_name:
