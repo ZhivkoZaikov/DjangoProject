@@ -175,8 +175,9 @@ class AuthorForm(forms.ModelForm):
         if date_of_birth > datetime.date.today() - relativedelta(years=18):
             raise forms.ValidationError('Invalid date! Author must be 18 years old or above!')
 
-        if date_of_death > datetime.date.today():
-            raise forms.ValidationError('Invalid date! Date of death cannot be in the future!')
+        if date_of_death != None:
+            if date_of_death > datetime.date.today():
+                 raise forms.ValidationError('Invalid date! Date of death cannot be in the future!')
         # for author_name in Author.objects.all():
         #     for author_last_name in Author.objects.all():
         #         if first_name_form == author_name.first_name and last_name_form == author_last_name.last_name:
