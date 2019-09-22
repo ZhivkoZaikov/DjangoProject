@@ -25,7 +25,7 @@ SECRET_KEY = 'fi&kq-3qfl7ln2)d@-j8p^9xqsqur_^3(shr@^b)m-r_-z))gv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['project.nonstopplovdiv.com']
+ALLOWED_HOSTS = ['project.nonstopplovdiv.com', '*']
 
 
 # Application definition
